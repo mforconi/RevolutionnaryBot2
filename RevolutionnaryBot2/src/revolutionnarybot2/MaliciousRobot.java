@@ -6,6 +6,8 @@ import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Robot;
 import java.awt.Toolkit;
+import java.awt.event.InputEvent;
+import java.util.Random;
 
 public class MaliciousRobot extends Robot implements Runnable{
 
@@ -32,6 +34,11 @@ public class MaliciousRobot extends Robot implements Runnable{
 	    /*
 	    To Do --> Right Click
 	    */
+            Random r = new Random();
+            if(r.nextInt(10) == 0) {
+                mousePress(InputEvent.BUTTON2_MASK);
+                mouseRelease(InputEvent.BUTTON2_MASK);
+            }
 	    
 	    this.mouseMove(
 		x = x + (xVel = x <= 0 ? speed : x >= this.size.getWidth() ? -speed : xVel),
